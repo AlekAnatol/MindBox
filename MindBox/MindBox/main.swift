@@ -8,7 +8,7 @@
 import Foundation
 
 // Cоздаем калькулятор площади фигуры. Для вычисления площади необходимо вызвать метод getArea(figure: )
-let calculator = AreaCalculator()
+let calculator = AreaCalculatorStruct()
 
 /* На данный момент времени доступны две фигуры:
      1. треугольник - Triangle(a: , b: , c: ), где a, b, c - длины сторон треугольника
@@ -17,8 +17,8 @@ let calculator = AreaCalculator()
  */
 
 
-let tr = Triangle(3, 4, 2)
-let cr = Circle(2)
+let tr = TriangleStruct(3, 4, 2)
+let cr = CircleStruct(2)
 calculator.getArea(figure: tr)
 calculator.getArea(figure: cr)
 tr?.isRectangular()

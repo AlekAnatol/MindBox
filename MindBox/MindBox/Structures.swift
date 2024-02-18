@@ -8,19 +8,19 @@
 import Foundation
 
 // Структура Калькулятор площади
-struct AreaCalculator {
+struct AreaCalculatorStruct {
     
     // Метод вычисление площади
-    func getArea(figure: CalculatableArea?) -> Double? {
+    func getArea(figure: CalculatableAreaProtcol?) -> Double? {
         guard let figure = figure else {
             print("Фигуры с заданными параметрами не существует")
             return nil
         }
         var ans = Double()
-        if figure is Triangle {
+        if figure is TriangleStruct {
             ans = figure.calculateArea()
             print(String(ans))
-        } else if figure is Circle {
+        } else if figure is CircleStruct {
             ans = figure.calculateArea()
             print(String(ans))
         }
@@ -29,12 +29,12 @@ struct AreaCalculator {
 }
 
 // Протокол, на который должна быть подписана структура, описывающая геометрическую фигуру
-protocol CalculatableArea {
+protocol CalculatableAreaProtcol {
     func calculateArea() -> Double
 }
 
 // Структура Треугольник
-struct Triangle: CalculatableArea {
+struct TriangleStruct: CalculatableAreaProtcol {
     private var a: Double
     private var b: Double
     private var c: Double
@@ -47,6 +47,7 @@ struct Triangle: CalculatableArea {
             self.b = b
             self.c = c
         } else {
+            print("Треугольник с заданными сторонами не существует")
             return nil
         }
     }
@@ -73,7 +74,7 @@ struct Triangle: CalculatableArea {
 }
 
 // Структура Круг
-struct Circle: CalculatableArea {
+struct CircleStruct: CalculatableAreaProtcol {
     private var r: Double
     
     // Проваливающийся инициализатор. В случае некорректных данных выведется сообщение и фигура не будет создана
@@ -81,6 +82,7 @@ struct Circle: CalculatableArea {
         if r >= 0 {
             self.r = r
         } else {
+            print("Круг с таким радиусом не существует")
             return nil
         }
     }
